@@ -64,7 +64,13 @@ def pad_sents(sents, pad_token):
     sents_padded = []
 
     ### COPY OVER YOUR CODE FROM ASSIGNMENT 4
-
+    sentsMaxLength = np.max([len(i) for i in sents])
+    for sent in sents:
+        sentLength = len(sent)
+        temp = sent.copy()
+        if sentLength < sentsMaxLength:
+            temp.extend([pad_token] * (sentsMaxLength - sentLength))
+        sents_padded.append(temp)
     ### END YOUR CODE FROM ASSIGNMENT 4
 
     return sents_padded
